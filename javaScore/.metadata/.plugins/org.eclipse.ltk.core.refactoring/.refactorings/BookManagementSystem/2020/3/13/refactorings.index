@@ -1,0 +1,4 @@
+1585118668998	Encapsulate field 'name'
+1585119292534	Encapsulate field 'bookInfo'
+1585129076287	Rename type 'FileTUtil'
+1585195235118	Extract method 'createPermisstions'

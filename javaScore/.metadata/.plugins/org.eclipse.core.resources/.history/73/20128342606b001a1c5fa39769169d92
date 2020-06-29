@@ -1,0 +1,26 @@
+package Chapter8Demo;
+
+class Super {
+	public int field = 8;
+	
+	public int getField() {
+		return field;
+	}
+}
+
+
+class Sub extends FieldAccess{
+	public int field = 1;
+	public int getField() {
+		return field;
+	}
+	
+	public int getSuperField() {
+		return super.field;
+	}
+	
+}
+
+public class FieldAccess{
+	
+}

@@ -1,0 +1,33 @@
+package Chapter8Demo;
+
+class Super {
+	public int field = 8;
+	
+	public int getField() {
+		return field;
+	}
+}
+
+
+class Sub extends Super{
+	public int field = 1;
+	public int getField() {
+		return field;
+	}
+	
+	public int getSuperField() {
+		return super.field;
+	}
+	
+}
+
+public class FieldAccess{
+	public static void main(String[] args) {
+		Super sup = new Sub();	//Upcast
+		System.out.println("sup.field = " + sup.field + "\tsup.getField() =" + sup.getField());
+		
+		Sub sub = new Sub();
+		System.out.println("sub.field =" + sub.field + "\tsup.getField = " + sup.getField() +
+				"\tsub.getSuperField =" + sub.getSuperField() );
+	}
+}
