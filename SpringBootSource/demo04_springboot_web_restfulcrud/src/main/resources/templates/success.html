@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>success</title>
+</head>
+<body>
+    <h3>成功！</h3>
+    <div  id="div01" class="myDiv" th:id="${kite}" th:class="${kite}" th:text="${kite}">这时显示欢迎信息</div>
+    <hr/>
+    <!--不转义特殊字符-->
+    <div th:text="${kite}"></div>
+    <!--转义特殊字符-->
+    <div th:utext="${kite}"></div>
+    <hr/>
+    <!--th：each每次都会生成当前的这个标签-->
+    <h4  th:text="${user}" th:each="user:${user}"></h4>
+    <hr/>
+    <h4>
+        <span th:each="user : ${user}">[[${user}]]</span>
+    </h4>
+
+</body>
+</html>
