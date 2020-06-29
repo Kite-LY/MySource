@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "person",
+      "type": "cn.kitey.demo02_config.bean.Person",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.birth",
+      "type": "java.util.Date",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.boss",
+      "type": "java.lang.Boolean",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.dog",
+      "type": "cn.kitey.demo02_config.bean.Dog",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.lists",
+      "type": "java.util.List<java.lang.Object>",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.maps",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    },
+    {
+      "name": "person.name",
+      "type": "java.lang.String",
+      "sourceType": "cn.kitey.demo02_config.bean.Person"
+    }
+  ],
+  "hints": []
+}

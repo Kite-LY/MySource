@@ -1,0 +1,30 @@
+#person:
+#  age: 19
+#  boss: true
+#  birth: 2017/12/22
+#  maps: {key1: value1, key2: value2}
+#  lists:
+#    - list1
+#    - list2
+#    - list3
+#  dog:
+#    name: 小白
+#    age: 5
+#  name: kite
+
+# 使用文档块模式
+server:
+  port: 8080
+spring:
+  profiles:
+    active: prod
+---
+server:
+  port: 8002
+spring:
+  profiles: dev
+---
+server:
+     port: 8003
+spring:
+  profiles: prod
