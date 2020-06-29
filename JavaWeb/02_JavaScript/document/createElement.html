@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreateElement</title>
+    <script type="text/javascript">
+        //通过创造Element对象对标签中填入数据
+       window.onload = function () {
+           //只能在整个页面执行完body对象才不会为空
+           var divElement = document.createElement("div");
+           divElement.innerHTML="你要好好吃饭！";
+
+           //添加子元素
+           document.body.append(divElement);
+       }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onchange</title>
+    <script type="text/javascript">
+        function onChangeFun() {
+            alert("静态注册onchange事件");
+        }
+
+        //动态注册onchange事件
+        window.onload = function () {
+            //1.获取对象
+            var sId = document.getElementById("sId");
+            sId.onchange = function () {
+                alert("动态注册onchange事件")
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table align="center">
+            <td>  <!--静态注册onchange事件-->
+                <select onchange="onChangeFun()" >
+                    <option>--请选择--</option>
+                    <option>--1--</option>
+                    <option>--2--</option>
+                    <option>--3--</option>
+                </select><br/>
+            </td>
+        </table>
+
+        <table align="center">
+            <td>  <!--静态注册onchange事件-->
+                <select onchange="onChangeFun()" id="sId" >
+                    <option>--请选择--</option>
+                    <option>--11--</option>
+                    <option>--22--</option>
+                    <option>--33--</option>
+                </select>
+            </td>
+        </table>
+
+
+    </form>
+
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--mybatis的主配置文件-->
+<configuration>
+    <!-- 配置环境信息-->
+    <environments default="mysql">
+        <!--配置数据库连接信息-->
+        <environment id="mysql">
+            <!-- 配置事务类型 -->
+            <transactionManager type="JDBC"></transactionManager>
+            <!-- 配置数据源（数据连接池）-->
+            <dataSource type="POOLED">
+                <!--配置数据连接的四个基本信息-->
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql:///eesy?characterEncoding=utf8"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="25002500"></property>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--&lt;!&ndash;指定映射的配置文件的位置，映射文件指的是每个dao独立的配置文件&ndash;&gt;-->
+    <!--<mappers>-->
+        <!--<mapper resource="com/kiteYY/dao/UserDao.xml"></mapper>-->
+    <!--</mappers>-->
+
+    <!--使用注解的方式进行（可以不进行UserDao.xml文件的配置）-->
+    <mappers>
+        <mapper class="com.kiteYY.dao.UserDao"/>
+    </mappers>
+
+</configuration>

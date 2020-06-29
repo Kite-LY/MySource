@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>onsubmit</title>
+    <script type="text/javascript">
+        function onSubmitFun() {
+            alert("静态注册表单提交事务");
+            return false;
+        }
+
+        //动态态注册表单提交事务
+        window.onload = function () {
+            var os = document.getElementById("oS");
+            os.onsubmit = function () {
+                alert("动态态注册表单提交事务")
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <!--静态注册表单提交事务：一般为了阻止表单发生了错误不进行提交-->
+    <form action="http://localhost:8080" method="get" onsubmit="return onSubmitFun()">
+        <input type="submit" value="静态注册"/>
+    </form>
+
+    <form action="http://localhost:8080" method="get" id="oS">
+        <input type="submit" value="动态注册"/>
+    </form>
+
+</body>
+</html>

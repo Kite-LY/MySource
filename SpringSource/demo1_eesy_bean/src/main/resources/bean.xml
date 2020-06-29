@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--把对象的创建交给spring来管理-->
+    <!--
+        spring对bean 的管理细节
+        1.创建bean的三种方式
+        2.bean对象的作用范围
+        3.bean对象的生命周期
+    -->
+
+    <!--
+        bean的作用范围的调整
+        bean标签的scope属性：
+        作用：用于指定bean的作用范围
+        取值：
+        singleton:表示单例的(默认值)
+        prototype：多例的
+        request：作用域web的请求范围
+        session：作用于web应用的会话范围
+        global-session：作用去全局的会话范围
+    -->
+
+    <!--
+        bean对象的生命周期
+        单例对象
+            出生：容器创建对象时出生
+            活着：只要容器还在，对象一直活着
+            死亡：容器销毁，对象消亡
+            总结：单例对象的生命周期与容器相同
+        多例对象
+            出生：当我们使用对象时spring框架为我们创建
+            活着：对象只要在使用的时候一直存在
+            死亡：长时间不调用，由java垃圾回收器回收
+
+    -->
+
+
+
+
+
+
+    <bean id="accountService" class="cn.kitey.service.impl.AccountServiceImpl"
+          scope="singleton"
+    ></bean>
+
+
+
+
+    <!--创建bean 的三种方式-->
+    <!--
+        1.使用默认构造函数进行创建，在spring配置文件中的使用了bean标签，配了id，class属性之后，且没有其他属性
+          标签时，采用的就是默认构造函数创建bean对象，如果此时没有默认构造函数，则无法创建
+
+
+    -->
+
+    <!--
+        2.使用普通工厂中的方法创建对象（使用莫个类中的方法创建对象，并存入spring容器中）
+         <bean id="instanceFactory" class="cn.kitey.factory.InstanceFactory"></bean>
+         <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
+    -->
+
+    <!--
+        3.使用工厂中的静态方法创建对象
+           <bean id="accountService" class="cn.kitey.factory.staticFactory" factory-method="getAccountService"></bean>
+
+    -->
+
+</beans>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //javascript中不允许函数重载
+        var fun1 = function () {
+            alert("加载无参函数");
+        }
+        var fun2 = function (a,b) {
+            alert(a + b);
+        }
+        var fun3 = function (num1, num2) {
+            return num1 + num2;
+        }
+        alert(fun3(12,33))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

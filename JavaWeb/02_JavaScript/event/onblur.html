@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type = "text/javascript">
+        //静态注册失去焦点事件
+        function onblurFun() {
+            //console：是控制台对象，用于浏览器控制台的输出，用于测试
+            //log:是其打印方法
+            console.log("静态注册失去焦点事件！")
+        }
+        //动态注册失去焦点事件
+        window.onload = function () {
+            //获取对象
+            var pwId= document.getElementById("pw");
+            pwId.onblur =function () {
+                console.log("动态注册失去焦点事件！")
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <form>
+        用户姓名:<input type="text" onblur="onblurFun()"/><br/>
+        用户密码:<input type="text" id="pw"/><br/>
+    </form>
+</body>
+</html>

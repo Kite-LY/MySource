@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElementById</title>
+    <script type="text/javascript">
+        //静态加载
+        function onclickFun() {
+            //1.当需要操作一个标签的时候需要获取标签对象
+            var username = document.getElementById("username");
+            //获取用户名输入框输入的内容
+            var value = username.value;
+
+            var usernameSpan = document.getElementById("usernameSpan");
+            //2.获取输入的内容
+                        //[object HTMLInputElement]:标签对象
+            //alert(username)
+            var text = /^\w{5,12}$/;
+            /*
+            test()方法用于测试字符串，是不是匹配规则
+            匹配：true
+            不匹配：false
+             */
+            // usernameSpan.innerHTML:可以获取标签中的内容，而且可以进行读写操作
+            // usernameSpan.innerHTML="用户名合法！";
+            // alert(usernameSpan.innerHTML);
+            if(text.test(value)){
+                //usernameSpan.innerHTML="用户名合法！";
+                usernameSpan.innerHTML="<img src='right.png ' width='20' height='20'>"
+            }else{
+               //usernameSpan.innerHTML="用户名不合法！";
+                usernameSpan.innerHTML="<img src='wrong.png' width='20' height='20'>";
+            }
+
+        }
+    </script>
+</head>
+<body>
+<!--需求：检验输入的用户名是不是合法-->
+    用户名：<input type="text" id="username"/>
+    <span id="usernameSpan" style="color:red"></span>
+    <button onclick="onclickFun()">校验</button>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+div{
+    /**
+    solid:表示border的实线边框
+     */
+    border: 2px darkred solid;
+}
+
+span{
+    border: 2px darkred solid;
+}

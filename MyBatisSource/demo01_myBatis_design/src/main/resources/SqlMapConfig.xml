@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--mybatis的主配置文件-->
+<configuration>
+    <!--配置连接的环境信息-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--配置事务类型  -->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url" value="jdbc:mysql:///eesy?characterEncoding=utf8"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="25002500"></property>
+            </dataSource>
+
+        </environment>
+    </environments>
+
+    <!--指定映射配置文件位置-->
+    <mappers>
+        <mapper class="com.kiteYY.dao.UserDao"></mapper>
+    </mappers>
+</configuration>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <!--开启注解扫描，希望处理service和dao。但是controller不需要框架进行处理-->
+    <context:component-scan base-package="cn.kitey">
+        <!--配置controller注解不进行扫面-->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>
+    </context:component-scan>
+
+    <!--Spring整合MyBatis-->
+    <!--配置数据连接池-->
+    <!--
+        我们这里一定要注意版本的对应
+        <mysql.version>8.0.13</mysql.version>
+        spring.version>5.0.3.RELEASE</spring.version>
+
+
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+             <version>0.9.5.2</version>
+        c3p0.version = 0.9.5.2
+
+       <groupId>org.mybatis</groupId>
+      <artifactId>mybatis-spring</artifactId>
+      <version>2.0.5</version>
+    -->
+    <bean id = "dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+        <property name="jdbcUrl" value="jdbc:mysql:///ssm?serverTimezone=UTC&amp;characterEncoding=utf-8"></property>
+        <property name="user" value="root"></property>
+        <property name="password" value="25002500"></property>
+    </bean>
+
+    <!--为了在AccountController中注入accountDao-->
+
+    <!--配置SqlSessionFactory工厂-->
+    <bean id = "sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--配置Account接口所在包-->
+    <bean id="mapperScanner" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.kitey.dao"></property>
+    </bean>
+
+    <!--配置Spring框架的声明式事务-->
+    <!--配置事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--配置事务通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--配置findAll方法为只读的-->
+            <tx:method name="find**" read-only="true"/>
+            <tx:method name="*" isolation="DEFAULT"></tx:method>
+        </tx:attributes>
+    </tx:advice>
+    <!--配置AOP增强-->
+    <aop:config>
+        <!--配置切入点表达式-->
+        <aop:pointcut id="accountOP" expression="execution(* cn.kitey.service.impl.*.*(..))"></aop:pointcut>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="accountOP"></aop:advisor>
+    </aop:config>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"></aop:aspectj-autoproxy>
+
+</beans>

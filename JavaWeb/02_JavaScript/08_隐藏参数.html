@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        function fun1() {
+            //隐藏参数
+            alert(arguments[3]);
+            for (var i = 0; i < arguments.length; i++) {
+                alert(arguments[i])
+            }
+        }
+        //fun1(12,23,44,"dde");
+
+        function fun2(num1, num2) {
+            var result = 0;
+            for (var i = 0; i < arguments.length; i++) {
+                if(typeof (arguments[i]) == "number"){
+                    result += arguments[i];
+                }
+            }
+            return result;
+
+        }
+        alert(fun2(1,23,4,5,56,76,7))
+    </script>
+</head>
+<body>
+
+</body>
+</html>

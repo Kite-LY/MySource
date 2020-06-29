@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--开启对包路径的扫描-->
+    <context:component-scan base-package="cn.kitey"></context:component-scan>
+
+    <!--开启视图解析器 -->
+    <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--注入文件所在的路径-->
+        <property name="prefix" value="/WEB-INF/pages/"></property>
+        <!--配置扫描的文件后缀名-->
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--配置拦截器-->
+    <nvc:interceptors>
+        <mvc:interceptor>
+            <!--配置要进行拦截的路径-->
+            <mvc:mapping path="/user/*"/>
+            <bean class="cn.kitey.interceptor.MyInterceptor"></bean>
+        </mvc:interceptor>
+        
+        <!--添加拦截器路径-->
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.kitey.interceptor.MyInterceptor1"></bean>
+        </mvc:interceptor>
+        
+    </nvc:interceptors>
+
+
+
+    <!--开启SpringMVC框架注解的支持-->
+    <mvc:annotation-driven ></mvc:annotation-driven>
+
+
+
+</beans>

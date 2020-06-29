@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mapper namespace="com.kiteYY.dao.UserDao">
+
+    <!--配置查询语句-->
+    <select id="findAll" resulType="com.kiteYY.domain.User">
+        select * from user;
+    </select>
+</mapper>

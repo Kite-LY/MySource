@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getElementByName</title>
+    <script type="text/javascript">
+        function checkAll() {
+            //通过getElementByName获取对象
+            var hobbies = document.getElementsByName("hobby");
+            //获取的 对象可以进行读写
+            for(var i =0; i < hobbies.length; i++){
+                hobbies[i].checked = true;
+            }
+        }
+        function checkNone() {
+            //通过getElementByName获取对象
+            var hobbies = document.getElementsByName("hobby");
+            //获取的 对象可以进行读写
+            for(var i =0; i < hobbies.length; i++){
+                hobbies[i].checked = false;
+            }
+        }
+        function checkReverse() {
+            var hobbies = document.getElementsByName("hobby");
+            for(var i =0; i < hobbies.length; i++){
+                if(hobbies[i].checked == false){
+                    hobbies[i].checked = true;
+                }else{
+                    hobbies[i].checked = false;
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+    兴趣爱好：
+    <input type="checkbox" name="hobby" value="Java" >Java
+    <input type="checkbox" name="hobby" value="cpp">C++
+    <input type="checkbox" name="hobby" value="JavaScript">JavaScript
+    <br/>
+    <button onclick="checkAll()">全选</button>
+    <button onclick="checkNone()">全不选</button>
+    <button onclick="checkReverse()">反选</button>
+
+</body>
+</html>
