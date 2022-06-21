@@ -14,7 +14,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <!--连接错误时注意mysql的版本要对应-->
-            <version>5.1.6</version>
+            <version>8.0.28</version>
             <scope>runtime</scope>
         </dependency>
 
